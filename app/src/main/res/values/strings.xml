@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">New UI</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">PetPals</string>
+    <string name="nav_header_subtitle">Encephalon IT Services PVT Ltd</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="username">Username(E-mail or Contact Number)</string>
+    <string name="password">Password</string>
+    <string name="ForgotPassword">Forgot Password ?</string>
+    <string name="MyAccount">My Account</string>
+    <string name="MyPets">My Pets</string>
+    <string name="MyRequests">My Resquests</string>
+    <string name="ContactUs">Contact Us</string>
+    <string name="changePassword">Change Password</string>
+    <string name="Share">Share With Friends</string>
+    <string name="Logout">Logout</string>
+    <string name="HowItWorks">How It Works</string>
+    <string name="FAQ">FAQ</string>
+    <string name="Communicate">Communicate</string>
+    <string name="Home">Home</string>
+    <string name="Account">Account</string>
+    <string name="Help">Help/Troubleshoot</string>
+    <string name="title_activity_contact_us">ContactUs</string>
+    <string name="phoneNumber_India">+91 9148430613</string>
+    <string name="name_PhoneNumber_India">Varsha</string>
+    <string name="phoneNumber_USA">+1 (203)5870578</string>
+    <string name="name_PhoneNumber_USA">Jagadeesh</string>
+</resources>

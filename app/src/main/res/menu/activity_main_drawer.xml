@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/Home" />
+    </group>
+
+    <item android:title="@string/Account">
+         <menu android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_myAccount"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="@string/MyAccount" />
+             <item
+                 android:id="@+id/nav_myPets"
+                 android:icon="@drawable/ic_menu_manage"
+                 android:title="@string/MyPets" />
+             <item
+                 android:id="@+id/nav_myRequests"
+                 android:icon="@drawable/ic_menu_manage"
+                 android:title="@string/MyRequests" />
+            <item
+                android:id="@+id/nav_changePassword"
+                 android:icon="@drawable/ic_menu_gallery"
+                 android:title="@string/changePassword" />
+             <item
+                 android:id="@+id/nav_logout"
+                 android:icon="@drawable/ic_menu_send"
+                 android:title="@string/Logout" />
+    </menu>
+    </item>
+
+    <item android:title="@string/Help">
+        <menu android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_howItWorks"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="@string/HowItWorks"
+                />
+            <item
+                android:id="@+id/nav_faq"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="@string/FAQ"/>
+        </menu>
+    </item>
+
+    <item android:title="@string/Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/Share" />
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/ContactUs" />
+        </menu>
+    </item>
+
+
+</menu>
