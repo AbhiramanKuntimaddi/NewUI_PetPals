@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity
@@ -25,14 +26,26 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Shows Intro Screen for first time
+        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .getBoolean("isFirstRun", true);
+
+        if (isFirstRun) {
+            //show start activity
+            startActivity(new Intent(MainActivity.this, IntroActivity.class));
+        }
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                .putBoolean("isFirstRun", false).apply();
+        //Intro Screen Ends
+
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                startActivity(new Intent(MainActivity.this,Activity_Search.class));
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(MainActivity.this,ActivitySearch.class));
+              /*  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
             }
         });
 
@@ -97,20 +110,18 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "Adopt pets and do much more with PetPals by downloading the application https://play.google.com/store/apps/details?id=com.encephalonit.petpals");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "Adopt Pets or Own Pets and do much more with PetPals by downloading the application https://play.google.com/store/apps/details?id=com.encephalonit.petpals");
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
         } else if (id == R.id.nav_contact) {
-            Intent intent = new Intent(this,ContactUs.class);
-            startActivity(intent);
+            startActivity(new Intent(this, ContactUs.class));
         } else if(id == R.id.nav_changePassword){
 
         } else if(id == R.id.nav_howItWorks){
-
+            startActivity(new Intent(this, IntroActivity.class));
         } else if(id == R.id.nav_faq){
 
         }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

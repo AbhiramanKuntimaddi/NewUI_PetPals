@@ -9,4 +9,11 @@
     <color name="colorSecondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+    <color name="materialWhite">#F5F5F5</color>
+
+    <color name="custom_slide_background">#3F51B5</color>
+    <color name="custom_slide_buttons">#1A237E</color>
+
+    <color name="black_overlay">#66000000</color>
+
 </resources>

@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home"
             android:title="@string/Home" />
     </group>
 
@@ -14,23 +14,23 @@
          <menu android:checkableBehavior="single">
             <item
                 android:id="@+id/nav_myAccount"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_account"
                 android:title="@string/MyAccount" />
              <item
                  android:id="@+id/nav_myPets"
-                 android:icon="@drawable/ic_menu_manage"
+                 android:icon="@drawable/ic_pet"
                  android:title="@string/MyPets" />
              <item
                  android:id="@+id/nav_myRequests"
-                 android:icon="@drawable/ic_menu_manage"
+                 android:icon="@drawable/ic_request"
                  android:title="@string/MyRequests" />
             <item
                 android:id="@+id/nav_changePassword"
-                 android:icon="@drawable/ic_menu_gallery"
+                 android:icon="@drawable/ic_change_password"
                  android:title="@string/changePassword" />
              <item
                  android:id="@+id/nav_logout"
-                 android:icon="@drawable/ic_menu_send"
+                 android:icon="@drawable/ic_logout"
                  android:title="@string/Logout" />
     </menu>
     </item>
@@ -39,12 +39,12 @@
         <menu android:checkableBehavior="single">
             <item
                 android:id="@+id/nav_howItWorks"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_how"
                 android:title="@string/HowItWorks"
                 />
             <item
                 android:id="@+id/nav_faq"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_faq"
                 android:title="@string/FAQ"/>
         </menu>
     </item>
@@ -53,11 +53,11 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_share"
                 android:title="@string/Share" />
             <item
                 android:id="@+id/nav_contact"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_contact"
                 android:title="@string/ContactUs" />
         </menu>
     </item>
