@@ -2,6 +2,7 @@ package com.sample.newui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -85,9 +86,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        //if (id == R.id.action_settings) {
+          //  return true;
+        //}
 
         return super.onOptionsItemSelected(item);
     }
@@ -116,14 +117,15 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_contact) {
             startActivity(new Intent(this, ContactUs.class));
         } else if(id == R.id.nav_changePassword){
-
+            startActivity(new Intent(this,ChangePassword.class));
         } else if(id == R.id.nav_howItWorks){
             startActivity(new Intent(this, IntroActivity.class));
         } else if(id == R.id.nav_faq){
-
+            startActivity(new Intent(this,FAQ.class));
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
