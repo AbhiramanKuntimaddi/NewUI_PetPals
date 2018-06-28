@@ -5,14 +5,26 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
+
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:contentDescription="@string/app_name"
-        android:scaleType="center"
-        app:srcCompat="@drawable/ic_petpals" />
+        android:src="@drawable/ic_petpals" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="140dp"
+        android:text="@string/petPals"
+        android:textAlignment="center"
+        android:textColor="#2c3e50"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
