@@ -144,6 +144,10 @@ public class MyAccount extends AppCompatActivity {
             Toast.makeText(MyAccount.this, "No Face Detected",Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(MyAccount.this, "Face Detected",Toast.LENGTH_LONG).show();
+            //upload the image to firebase database
+            /**should add SaveImage function for testing the function and later should add the code
+             * for uploading the image to the firebase databbase.
+             * */
         }
 
     }
