@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity
                 Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_myAccount) {
-
+                startActivity(new Intent(this,MyAccount.class));
         } else if (id == R.id.nav_myPets) {
 
         } else if (id == R.id.nav_myRequests) {
