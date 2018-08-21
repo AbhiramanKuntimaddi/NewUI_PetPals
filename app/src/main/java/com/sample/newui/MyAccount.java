@@ -1,18 +1,23 @@
 package com.sample.newui;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,7 +27,15 @@ import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class MyAccount extends AppCompatActivity {
 
@@ -31,7 +44,7 @@ public class MyAccount extends AppCompatActivity {
     private static final int GALLERY = 1;
     private static final int CAMERA = 2;
     //test folder ref
-    private static final String IMAGE_DIREECTORY = "/PetPals/Profile_Pictures";
+    private static final String IMAGE_DIRECTORY = "/PetPals/Profile_Pictures";
 
     ImageView imageView;
 
@@ -58,6 +71,14 @@ public class MyAccount extends AppCompatActivity {
                 showPicDiag();
             }
         });
+
+        FaceDetector faceDetector = new FaceDetector.Builder(getApplicationContext())
+                .setTrackingEnabled(false)
+                .setLandmarkType(FaceDetector.ALL_LANDMARKS)
+                .setMode(FaceDetector.FAST_MODE)
+                .build();
+
+        Toast.makeText(this,"Face_"+faceDetector.isOperational(),Toast.LENGTH_LONG).show();
     }
 
     private void showPicDiag(){
@@ -124,11 +145,16 @@ public class MyAccount extends AppCompatActivity {
                 .setLandmarkType(FaceDetector.ALL_LANDMARKS)
                 .setMode(FaceDetector.FAST_MODE)
                 .build();
-        if(faceDetector.isOperational())
+
+        /**Check if facedetector is available or not. if facedetector.isOperational() throws true then FD is
+         * available else throw a Toast message saying FD could not setup.
+         * */
+        if(!faceDetector.isOperational())
         {
-            Toast.makeText(MyAccount.this, "Face Detector could not be setup on your device",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Face Detector could not be setup on your device",Toast.LENGTH_LONG).show();
             return;
         }
+
         Frame frame = new Frame.Builder().setBitmap(bitmap).build();
         SparseArray<Face> sparseArray = faceDetector.detect(frame);
         x1 = x2 = y1 = y2 = RESET_VALUES;
@@ -148,7 +174,38 @@ public class MyAccount extends AppCompatActivity {
             /**should add SaveImage function for testing the function and later should add the code
              * for uploading the image to the firebase databbase.
              * */
+            //Saves image to the internal directory i.e, /PetPals/Profile_Pictures
+            saveImage(bitmap);
         }
 
+    }
+
+    public String saveImage(Bitmap myBitmap) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        myBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        File wallpaperDirectory = new File(
+                Environment.getExternalStorageDirectory() + IMAGE_DIRECTORY);
+        // have the object build the directory structure, if needed.
+        if (!wallpaperDirectory.exists()) {
+            wallpaperDirectory.mkdirs();
+        }
+
+        try {
+            File f = new File(wallpaperDirectory, Calendar.getInstance()
+                    .getTimeInMillis() +"_PetPals_Profile_pic_temp"+".jpg");
+            f.createNewFile();
+            FileOutputStream fo = new FileOutputStream(f);
+            fo.write(bytes.toByteArray());
+            MediaScannerConnection.scanFile(this,
+                    new String[]{f.getPath()},
+                    new String[]{"image/jpeg"}, null);
+            fo.close();
+            Log.d("TAG", "File Saved::--->" + f.getAbsolutePath());
+
+            return f.getAbsolutePath();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        return "";
     }
 }
