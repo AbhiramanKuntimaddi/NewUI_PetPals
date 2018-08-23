@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -48,10 +49,6 @@ public class MyAccount extends AppCompatActivity {
 
     ImageView imageView;
 
-    RectF rectF;
-    Canvas canvas;
-    //Test rectangle paint tool
-    Paint rectPaint = new Paint();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,7 +121,7 @@ public class MyAccount extends AppCompatActivity {
             if(data != null){
                 Uri contextURI = data.getData();
                 try{
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),contextURI);
+                  final Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),contextURI);
                    Face_Recognition(bitmap);
                 } catch (IOException e){
                     e.printStackTrace();
@@ -137,7 +134,7 @@ public class MyAccount extends AppCompatActivity {
         }
     }
 
-    private void Face_Recognition(Bitmap bitmap) {
+    private void Face_Recognition(final Bitmap bitmap) {
         imageView.setImageBitmap(bitmap);
 
         FaceDetector faceDetector = new FaceDetector.Builder(getApplicationContext())
@@ -146,9 +143,6 @@ public class MyAccount extends AppCompatActivity {
                 .setMode(FaceDetector.FAST_MODE)
                 .build();
 
-        /**Check if facedetector is available or not. if facedetector.isOperational() throws true then FD is
-         * available else throw a Toast message saying FD could not setup.
-         * */
         if(!faceDetector.isOperational())
         {
             Toast.makeText(this, "Face Detector could not be setup on your device",Toast.LENGTH_LONG).show();
@@ -168,6 +162,21 @@ public class MyAccount extends AppCompatActivity {
 
         if(x2 == 0 && y2 == 0){
             Toast.makeText(MyAccount.this, "No Face Detected",Toast.LENGTH_LONG).show();
+            
+            AlertDialog.Builder nofaceDiag = new AlertDialog.Builder(this);
+            nofaceDiag.setTitle("No Face Detected, Are you sure you want to upload your profile picture?");
+
+            nofaceDiag.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    saveImage(bitmap);
+                    Toast.makeText(MyAccount.this,"yes" , Toast.LENGTH_SHORT).show();
+                } });
+            nofaceDiag.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                } });
+            nofaceDiag.show();
+
         }else{
             Toast.makeText(MyAccount.this, "Face Detected",Toast.LENGTH_LONG).show();
             //upload the image to firebase database
@@ -177,6 +186,13 @@ public class MyAccount extends AppCompatActivity {
             //Saves image to the internal directory i.e, /PetPals/Profile_Pictures
             saveImage(bitmap);
         }
+
+    }
+
+    private void ShowDiagNoFace() {
+
+
+
 
     }
 

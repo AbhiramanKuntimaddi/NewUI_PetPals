@@ -60,7 +60,7 @@ public class IntroActivity extends MaterialIntroActivity {
                         .backgroundColor(R.color.design_default_color_primary)
                         .buttonsColor(R.color.colorAccent)
                         .possiblePermissions(new String[]{Manifest.permission.CALL_PHONE, Manifest.permission.READ_SMS})
-                        .neededPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
+                        .neededPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE})
                         .image(R.drawable.ic_permission)
                         .title("Permissions")
                         .description("The application needs these permissions to work.")
