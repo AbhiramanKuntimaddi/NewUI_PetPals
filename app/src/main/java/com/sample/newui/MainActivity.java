@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this, IntroActivity.class));
         } else if(id == R.id.nav_faq){
             startActivity(new Intent(this,FAQ.class));
+        } else if(id == R.id.nav_logout){
+            startActivity(new Intent(this,LoginActivity.class));
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

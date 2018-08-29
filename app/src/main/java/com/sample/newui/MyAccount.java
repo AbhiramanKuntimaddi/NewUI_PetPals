@@ -189,12 +189,6 @@ public class MyAccount extends AppCompatActivity {
 
     }
 
-    private void ShowDiagNoFace() {
-
-
-
-
-    }
 
     public String saveImage(Bitmap myBitmap) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
